@@ -47,8 +47,11 @@ public class Step01VariableTest extends PlainTestCase {
         String piari = null;
         String dstore = "mai";
         sea = sea + land + piari + ":" + dstore;
-        log(sea); // your answer? => 
+        log(sea); // your answer? => mystic8:mai
     }
+
+    // taiga.sunamoto nullって文字列として連結されるんだ...  (2026/07/24)
+    // taiga.sunamoto NPEは起こらないのか？  (2026/07/24)
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_variable_reassigned_basic() {
@@ -56,8 +59,12 @@ public class Step01VariableTest extends PlainTestCase {
         String land = "oneman";
         sea = land;
         land = land + "'s dreams";
-        log(sea); // your answer? => 
+        log(sea); // your answer? => oneman
+        log(land);
     }
+
+    // taiga.sunamoto 基本的には文字列リテラルを参照している形という理解  (2026/07/24)
+    // taiga.sunamoto メモリ管理とかはCと似てたりするのかな  (2026/07/24)
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_variable_reassigned_int() {
@@ -65,7 +72,7 @@ public class Step01VariableTest extends PlainTestCase {
         int land = 415;
         sea = land;
         land++;
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 415
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -75,8 +82,18 @@ public class Step01VariableTest extends PlainTestCase {
         sea = land;
         sea = land.add(new BigDecimal(1));
         sea.add(new BigDecimal(1));
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 416
     }
+
+    // taiga.sunamoto  これっぽいなで正解しちゃったからちょっとちゃんと調べてみる (2026/07/24)
+    // taiga.sunamoto  kotlinと同じくイミュータブルかそうでないかが重要になってきそう (2026/07/24)
+    // taiga.sunamoto  StringとかBigDecimalはイミュータブルだから基本的に新しいインスタンスが作られる (2026/07/24)
+    // taiga.sunamoto  なんか値オブジェクトみたい (2026/07/24)
+    // taiga.sunamoto  というかStringとかBigDecimalとかってプリミティブな型じゃなくてクラスだからもろ値オブジェクトか？ (2026/07/24)
+    // taiga.sunamoto  てかそもそもなんでStringとかIntegerってBigDecimalと違ってnewせずにインスタンス化できてるんだ？ (2026/07/24)
+
+    // 2026/07/24の週はここまで！！
+    // もうちょいペース上げないと一生沼りそう
 
     // ===================================================================================
     //                                                                   Instance Variable
