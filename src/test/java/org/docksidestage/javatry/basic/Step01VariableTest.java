@@ -52,6 +52,8 @@ public class Step01VariableTest extends PlainTestCase {
 
     // taiga.sunamoto nullって文字列として連結されるんだ...  (2026/07/24)
     // taiga.sunamoto NPEは起こらないのか？  (2026/07/24)
+    // TODO sunamoto [ふぉろー] びっくりされるかもですね笑 by jflute (2026/07/29)
+    // プログラミング言語の決めで、他の言語だと、空文字になったり、エラーになったり、全部nullになったり色々です。
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_variable_reassigned_basic() {
@@ -65,6 +67,7 @@ public class Step01VariableTest extends PlainTestCase {
 
     // taiga.sunamoto 基本的には文字列リテラルを参照している形という理解  (2026/07/24)
     // taiga.sunamoto メモリ管理とかはCと似てたりするのかな  (2026/07/24)
+    // TODO jflute 1on1にて、変数とインスタンスの関係性について話する予定 (2026/07/29)
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_variable_reassigned_int() {
@@ -91,9 +94,19 @@ public class Step01VariableTest extends PlainTestCase {
     // taiga.sunamoto  なんか値オブジェクトみたい (2026/07/24)
     // taiga.sunamoto  というかStringとかBigDecimalとかってプリミティブな型じゃなくてクラスだからもろ値オブジェクトか？ (2026/07/24)
     // taiga.sunamoto  てかそもそもなんでStringとかIntegerってBigDecimalと違ってnewせずにインスタンス化できてるんだ？ (2026/07/24)
+    // TODO sunamoto [いいね] 合っててもちゃんと調べてみると素晴らしい！ by jflute (2026/07/29)
+    // immutable/mutableしっかり理解されているようでいいですね！
+    // まあ、広義に捉えて「値オブジェクト」と言っても過言ではないかもですね。
+    // Stringは、スーパー基本クラスなので特別扱いです。"abc" で new されます。
+    // Integerは、基本的にはnewしないとインスタンス化されないですが...
+    // プリミティヴ型からオートボクシングが発生した時に内部的newが発生することがありますね。
+    // ラッパー型なのかどうか？というところがポイントで、BigDecimalはラッパー型ではないんですよね。
+    // TODO sunamoto [読み物課題] プリミティブ型とラッパー型 by jflute (2026/07/29)
+    // https://dbflute.seasar.org/ja/manual/topic/programming/java/beginners.html#primitivewrapper
 
     // 2026/07/24の週はここまで！！
     // もうちょいペース上げないと一生沼りそう
+    // TODO sunamoto [いいね] 最初の基礎の基礎は大事なところなので、じっくりで大丈夫ですよ^^ by jflute (2026/07/29)
 
     // ===================================================================================
     //                                                                   Instance Variable
