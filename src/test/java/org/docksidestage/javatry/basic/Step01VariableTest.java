@@ -52,22 +52,37 @@ public class Step01VariableTest extends PlainTestCase {
 
     // taiga.sunamoto nullって文字列として連結されるんだ...  (2026/07/24)
     // taiga.sunamoto NPEは起こらないのか？  (2026/07/24)
-    // TODO sunamoto [ふぉろー] びっくりされるかもですね笑 by jflute (2026/07/29)
+    // done sunamoto [ふぉろー] びっくりされるかもですね笑 by jflute (2026/07/29)
     // プログラミング言語の決めで、他の言語だと、空文字になったり、エラーになったり、全部nullになったり色々です。
+    // Javaの "null" って出てくる挙動:
+    // o デメリット: 画面とかメールとかnullって表示されやすい。
+    // o メリット: $プログラムを止めない(ケースに寄る)、開発時だとnullって表示されて欲しい。
+    // 会員登録のメール送信エラーを止めない話の例。
+    // 些細なことでもメリデメ考える習慣を。今後も A or B の選択を色々していくことになる。
+    // 1on1での思考トレーニング。
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_variable_reassigned_basic() {
-        String sea = "mystic";
-        String land = "oneman";
-        sea = land;
-        land = land + "'s dreams";
-        log(sea); // your answer? => oneman
-        log(land);
+        String sea = "mystic"; // 1: 1丁目1番地
+        String land = "oneman"; // 2: 2丁目2番地
+        sea = land; // seaの紙の1丁目1番地を消しゴムで消して、2丁目2番地に書き換えてる
+        land = land + "'s dreams"; // 3: 's dreams, 4: oneman's dreams
+        log(sea); // your answer? => oneman (2)
+        log(land); // oneman's dreams (2? or 4?) → (4)
     }
 
     // taiga.sunamoto 基本的には文字列リテラルを参照している形という理解  (2026/07/24)
     // taiga.sunamoto メモリ管理とかはCと似てたりするのかな  (2026/07/24)
-    // TODO jflute 1on1にて、変数とインスタンスの関係性について話する予定 (2026/07/29)
+    // done jflute 1on1にて、変数とインスタンスの関係性について話する予定 (2026/07/29)
+    // #1on1: 変数のお話 (2026/07/30)
+    // $アドレスが入っているイメージ → Javaでもオブジェクト型の場合はアドレスが入っている。
+    // #1on1: インスタンスのお話 (2026/07/30)
+    // $オブジェクトの複製品たちみたいな
+    // 一軒家の例。
+    // インスタンスフォーカスの大切さ。インスタンス間違いをしないように。
+    // 変数とインスタンスは1:1で取り扱うことが多いけど、厳密にはn:1もあり得る。
+    // 後半エクササイズのメソッド引数によるn:1の話。クラス間のn:1の話。
+    // BigDecimalでのインスタンスエクササイズもやった。
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_variable_reassigned_int() {
@@ -76,6 +91,8 @@ public class Step01VariableTest extends PlainTestCase {
         sea = land;
         land++;
         log(sea); // your answer? => 415
+        // #1on1: プリミティブ型 (2026/07/30)
+        // 他の言語だと、もうプリミティブ型がない言語も。intと書いて実はオブジェクト扱い。
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
