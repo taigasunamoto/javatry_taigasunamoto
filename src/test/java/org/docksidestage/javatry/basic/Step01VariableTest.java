@@ -111,19 +111,19 @@ public class Step01VariableTest extends PlainTestCase {
     // taiga.sunamoto  なんか値オブジェクトみたい (2026/07/24)
     // taiga.sunamoto  というかStringとかBigDecimalとかってプリミティブな型じゃなくてクラスだからもろ値オブジェクトか？ (2026/07/24)
     // taiga.sunamoto  てかそもそもなんでStringとかIntegerってBigDecimalと違ってnewせずにインスタンス化できてるんだ？ (2026/07/24)
-    // TODO sunamoto [いいね] 合っててもちゃんと調べてみると素晴らしい！ by jflute (2026/07/29)
+    // TODO done sunamoto [いいね] 合っててもちゃんと調べてみると素晴らしい！ by jflute (2026/07/29)
     // immutable/mutableしっかり理解されているようでいいですね！
     // まあ、広義に捉えて「値オブジェクト」と言っても過言ではないかもですね。
     // Stringは、スーパー基本クラスなので特別扱いです。"abc" で new されます。
     // Integerは、基本的にはnewしないとインスタンス化されないですが...
     // プリミティヴ型からオートボクシングが発生した時に内部的newが発生することがありますね。
     // ラッパー型なのかどうか？というところがポイントで、BigDecimalはラッパー型ではないんですよね。
-    // TODO sunamoto [読み物課題] プリミティブ型とラッパー型 by jflute (2026/07/29)
+    // TODO done sunamoto [読み物課題] プリミティブ型とラッパー型 by jflute (2026/07/29)
     // https://dbflute.seasar.org/ja/manual/topic/programming/java/beginners.html#primitivewrapper
 
     // 2026/07/24の週はここまで！！
     // もうちょいペース上げないと一生沼りそう
-    // TODO sunamoto [いいね] 最初の基礎の基礎は大事なところなので、じっくりで大丈夫ですよ^^ by jflute (2026/07/29)
+    // TODO done sunamoto [いいね] 最初の基礎の基礎は大事なところなので、じっくりで大丈夫ですよ^^ by jflute (2026/07/29)
 
     // ===================================================================================
     //                                                                   Instance Variable
@@ -136,19 +136,21 @@ public class Step01VariableTest extends PlainTestCase {
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_variable_instance_variable_default_String() {
         String sea = instanceBroadway;
-        log(sea); // your answer? => 
+        log(sea); // your answer? => null
     }
+    // taiga.sunamoto  前回習ったやつ！ (2026/08/07)
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_variable_instance_variable_default_int() {
         int sea = instanceDockside;
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 0
     }
+    // taiga.sunamoto  インスタンス変数のintはデフォルトで0 (2026/08/07)
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_variable_instance_variable_default_Integer() {
         Integer sea = instanceHangar;
-        log(sea); // your answer? => 
+        log(sea); // your answer? => null
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -157,8 +159,12 @@ public class Step01VariableTest extends PlainTestCase {
         instanceMagiclamp = "magician";
         helpInstanceVariableViaMethod(instanceMagiclamp);
         String sea = instanceBroadway + "|" + instanceDockside + "|" + instanceHangar + "|" + instanceMagiclamp;
-        log(sea); // your answer? => 
+        log(sea); // your answer? => bigband|1|null|magician
     }
+    // taiga.sunamoto  ローカル変数をに代入してるだけだからinstanceMagiclampは変わらない (2026/08/07)
+    // taiga.sunamoto  thisとかつけてローカル変数とインスタンス変数区別する (2026/08/07)
+    // taiga.sunamoto  IntelliJちゃんが頭良いせいで、「パラメーターはローカル変数に変換できます」って出てきちゃってた... (2026/08/07)
+
 
     private void helpInstanceVariableViaMethod(String instanceMagiclamp) {
         instanceBroadway = "bigband";
@@ -177,8 +183,10 @@ public class Step01VariableTest extends PlainTestCase {
         String sea = "harbor";
         int land = 415;
         helpMethodArgumentImmutableMethodcall(sea, land);
-        log(sea); // your answer? => 
+        log(sea); // your answer? => harbor
     }
+    // taiga.sunamoto  "harbor416"はGC対象 (2026/08/07)
+    // taiga.sunamoto  landは415のまま (2026/08/07)
 
     private void helpMethodArgumentImmutableMethodcall(String sea, int land) {
         ++land;
@@ -194,8 +202,13 @@ public class Step01VariableTest extends PlainTestCase {
         StringBuilder sea = new StringBuilder("harbor");
         int land = 415;
         helpMethodArgumentMethodcall(sea, land);
-        log(sea); // your answer? => 
+        log(sea); // your answer? => harbor416
     }
+    // if (i == Integer.MIN_VALUE) {
+    //            append("-2147483648");
+    //            return this;
+    //        }
+    // taiga.sunamoto  これを見て42を思い出した (2026/08/07)
 
     private void helpMethodArgumentMethodcall(StringBuilder sea, int land) {
         ++land;
@@ -210,7 +223,7 @@ public class Step01VariableTest extends PlainTestCase {
         StringBuilder sea = new StringBuilder("harbor");
         int land = 415;
         helpMethodArgumentVariable(sea, land);
-        log(sea); // your answer? => 
+        log(sea); // your answer? => harbor
     }
 
     private void helpMethodArgumentVariable(StringBuilder sea, int land) {
@@ -218,6 +231,9 @@ public class Step01VariableTest extends PlainTestCase {
         String seaStr = sea.toString(); // is "harbor"
         sea = new StringBuilder(seaStr).append(land);
     }
+    // taiga.sunamoto  新しいオブジェクトつくっちゃってるから元のseaには関係なし (2026/08/07)
+
+    // 第二週はここまで！！
 
     // ===================================================================================
     //                                                                           Challenge
