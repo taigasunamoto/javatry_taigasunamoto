@@ -112,20 +112,22 @@ public class Step01VariableTest extends PlainTestCase {
     // taiga.sunamoto  なんか値オブジェクトみたい (2026/07/24)
     // taiga.sunamoto  というかStringとかBigDecimalとかってプリミティブな型じゃなくてクラスだからもろ値オブジェクトか？ (2026/07/24)
     // taiga.sunamoto  てかそもそもなんでStringとかIntegerってBigDecimalと違ってnewせずにインスタンス化できてるんだ？ (2026/07/24)
-    // TODO done sunamoto [いいね] 合っててもちゃんと調べてみると素晴らしい！ by jflute (2026/07/29)
+    // done sunamoto [いいね] 合っててもちゃんと調べてみると素晴らしい！ by jflute (2026/07/29)
     // immutable/mutableしっかり理解されているようでいいですね！
     // まあ、広義に捉えて「値オブジェクト」と言っても過言ではないかもですね。
     // Stringは、スーパー基本クラスなので特別扱いです。"abc" で new されます。
     // Integerは、基本的にはnewしないとインスタンス化されないですが...
     // プリミティヴ型からオートボクシングが発生した時に内部的newが発生することがありますね。
     // ラッパー型なのかどうか？というところがポイントで、BigDecimalはラッパー型ではないんですよね。
-    // TODO done sunamoto [読み物課題] プリミティブ型とラッパー型 by jflute (2026/07/29)
+    // done sunamoto [読み物課題] プリミティブ型とラッパー型 by jflute (2026/07/29)
     // https://dbflute.seasar.org/ja/manual/topic/programming/java/beginners.html#primitivewrapper
 
     // 2026/07/24の週はここまで！！
     // もうちょいペース上げないと一生沼りそう
-    // TODO done sunamoto [いいね] 最初の基礎の基礎は大事なところなので、じっくりで大丈夫ですよ^^ by jflute (2026/07/29)
+    // done sunamoto [いいね] 最初の基礎の基礎は大事なところなので、じっくりで大丈夫ですよ^^ by jflute (2026/07/29)
     // TODO sunamoto 焦らずじっくり頑張りましょー by fujisawa (2026/08/13)
+
+    // TODO jflute 次回はimmutableやるぞ！ (2026/08/13)
 
     // ===================================================================================
     //                                                                   Instance Variable
@@ -168,7 +170,6 @@ public class Step01VariableTest extends PlainTestCase {
     // taiga.sunamoto  IntelliJちゃんが頭良いせいで、「パラメーターはローカル変数に変換できます」って出てきちゃってた... (2026/08/07)
     // TODO sunamoto IDEの出してくる情報を気にするのは、実際の業務でも役に立つので継続しましょう by fujisawa (2026/08/13)
 
-
     private void helpInstanceVariableViaMethod(String instanceMagiclamp) {
         instanceBroadway = "bigband";
         ++instanceDockside;
@@ -190,6 +191,7 @@ public class Step01VariableTest extends PlainTestCase {
     }
     // taiga.sunamoto  "harbor416"はGC対象 (2026/08/07)
     // taiga.sunamoto  landは415のまま (2026/08/07)
+    // TODO jflute 1on1にて、BigDecimalエクササイズのimmutableと合わせてフォロー予定 (2026/08/13)
 
     private void helpMethodArgumentImmutableMethodcall(String sea, int land) {
         ++land;
@@ -212,6 +214,8 @@ public class Step01VariableTest extends PlainTestCase {
     //            return this;
     //        }
     // taiga.sunamoto  これを見て42を思い出した (2026/08/07)
+    // TODO sunamoto [いいね] ソースコード読んでるの素晴らしい by jflute (2026/08/13)
+    // TODO sunamoto [へー] 気になる笑 by jflute (2026/08/13)
 
     private void helpMethodArgumentMethodcall(StringBuilder sea, int land) {
         ++land;
@@ -235,6 +239,7 @@ public class Step01VariableTest extends PlainTestCase {
         sea = new StringBuilder(seaStr).append(land);
     }
     // taiga.sunamoto  新しいオブジェクトつくっちゃってるから元のseaには関係なし (2026/08/07)
+    // TODO sunamoto [いいね] ちゃんとインスタンスの違いを理解されていますね！ by jflute (2026/08/13)
 
     // 第二週はここまで！！
 
