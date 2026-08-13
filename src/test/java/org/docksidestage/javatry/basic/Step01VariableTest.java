@@ -51,6 +51,7 @@ public class Step01VariableTest extends PlainTestCase {
     }
 
     // taiga.sunamoto nullって文字列として連結されるんだ...  (2026/07/24)
+    // TODO sunamoto 全く同じことを思った記憶があります by fujisawa (2026/08/13)
     // taiga.sunamoto NPEは起こらないのか？  (2026/07/24)
     // done sunamoto [ふぉろー] びっくりされるかもですね笑 by jflute (2026/07/29)
     // プログラミング言語の決めで、他の言語だと、空文字になったり、エラーになったり、全部nullになったり色々です。
@@ -124,6 +125,7 @@ public class Step01VariableTest extends PlainTestCase {
     // 2026/07/24の週はここまで！！
     // もうちょいペース上げないと一生沼りそう
     // TODO done sunamoto [いいね] 最初の基礎の基礎は大事なところなので、じっくりで大丈夫ですよ^^ by jflute (2026/07/29)
+    // TODO sunamoto 焦らずじっくり頑張りましょー by fujisawa (2026/08/13)
 
     // ===================================================================================
     //                                                                   Instance Variable
@@ -164,6 +166,7 @@ public class Step01VariableTest extends PlainTestCase {
     // taiga.sunamoto  ローカル変数をに代入してるだけだからinstanceMagiclampは変わらない (2026/08/07)
     // taiga.sunamoto  thisとかつけてローカル変数とインスタンス変数区別する (2026/08/07)
     // taiga.sunamoto  IntelliJちゃんが頭良いせいで、「パラメーターはローカル変数に変換できます」って出てきちゃってた... (2026/08/07)
+    // TODO sunamoto IDEの出してくる情報を気にするのは、実際の業務でも役に立つので継続しましょう by fujisawa (2026/08/13)
 
 
     private void helpInstanceVariableViaMethod(String instanceMagiclamp) {
