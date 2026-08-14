@@ -127,7 +127,46 @@ public class Step01VariableTest extends PlainTestCase {
     // done sunamoto [いいね] 最初の基礎の基礎は大事なところなので、じっくりで大丈夫ですよ^^ by jflute (2026/07/29)
     // TODO sunamoto 焦らずじっくり頑張りましょー by fujisawa (2026/08/13)
 
-    // TODO jflute 次回はimmutableやるぞ！ (2026/08/13)
+    // done jflute 次回はimmutableやるぞ！ (2026/08/13)
+    // #1on1: immutable/mutableとは？ (2026/08/14)
+    // immutableという言葉使うか？ $ そこまでしっかり使ってない？
+    // $ 気になって調べたら出てくる。→ それで意味は知ってる。
+    // 
+    // 不変な
+    // o immutableなクラス(インスタンス) // default!?
+    // o immutableな変数
+    //
+    // BigDecimal のコードを改めて読んでみてimmutableなクラスとして設計されている。
+    // なので、newしたBigDecimalインスタンスは、immutableなインスタンスになる。
+    //
+    // immutableのメリット・デメリット:
+    // (メリット)
+    // o $ DDDの値オブジェクト、値の透過性？値が変わった時に新しいインスタンス？ by すなもとさん
+    // o $ 前の状態を保持できる、残しておくことができる by すなもとさん
+    // o 変わっちゃいけないものを変えられないようにして安全/安心を得る → 安全性
+    // o 業務的に変わるの場合は？
+    // o 後半エクササイズで読み飛ばしなどの可読性を実感
+    // o 状態が変化するものを把握するというのは人間むずかしい (可読性の一つ)
+    //   → インスタンスの中身は変わらないってルールの方が脳みそ優しいという考え方
+    //
+    // (デメリット)
+    // o $ 値を変えたい時に、インスタンスが作られるのでメモリ使う
+    // o immutableは、手間を掛けてimmutableにしている → 言語サポート欲しい
+    //
+    // immutableの歴史:
+    // o 昔は、メモリが貧弱、new/newするプログラミングやってられない
+    // o 昔は、言語が貧弱、immutableをサポートする文法が少ない
+    // o 今や、メモリもたっぷり、言語発達、デメリット少なくなってきた
+    //
+    // ※アイディア自体は(大抵)昔からあって、
+    // インフラ都合のデメリットが解消されて流行るようになる。
+    //
+    // immutableのバランス:
+    // o 言語や組織や個人の文化に寄る
+    // o Java: 歴史的なこともあり(古いクラス一杯)、コンセプトもimmutable全推しではない、
+    //         ので、8:2くらいでimmutable寄りで、but 無理しない (jflute個人もそう)
+    //         (mutableで書く時は、安全性/可読性を別の手段で演出するように工夫)
+    // o 他の言語では、immutable全推しのものもある。
 
     // ===================================================================================
     //                                                                   Instance Variable
@@ -192,6 +231,9 @@ public class Step01VariableTest extends PlainTestCase {
     // taiga.sunamoto  "harbor416"はGC対象 (2026/08/07)
     // taiga.sunamoto  landは415のまま (2026/08/07)
     // TODO jflute 1on1にて、BigDecimalエクササイズのimmutableと合わせてフォロー予定 (2026/08/13)
+    // #1on1: immutableがわかっていれば、helpメソッド読まなくても答えが出る (2026/08/14)
+    // 読み飛ばしができるようになる。immutableってのは読み手にとっての情報でもある。
+    // mutableだったら、変えてないにしてもそれを確認するためにくまなく読まないといけない。
 
     private void helpMethodArgumentImmutableMethodcall(String sea, int land) {
         ++land;
