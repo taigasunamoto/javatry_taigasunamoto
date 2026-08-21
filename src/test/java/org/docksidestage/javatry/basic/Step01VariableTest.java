@@ -51,7 +51,7 @@ public class Step01VariableTest extends PlainTestCase {
     }
 
     // taiga.sunamoto nullって文字列として連結されるんだ...  (2026/07/24)
-    // TODO sunamoto 全く同じことを思った記憶があります by fujisawa (2026/08/13)
+    // done sunamoto 全く同じことを思った記憶があります by fujisawa (2026/08/13)
     // taiga.sunamoto NPEは起こらないのか？  (2026/07/24)
     // done sunamoto [ふぉろー] びっくりされるかもですね笑 by jflute (2026/07/29)
     // プログラミング言語の決めで、他の言語だと、空文字になったり、エラーになったり、全部nullになったり色々です。
@@ -125,7 +125,7 @@ public class Step01VariableTest extends PlainTestCase {
     // 2026/07/24の週はここまで！！
     // もうちょいペース上げないと一生沼りそう
     // done sunamoto [いいね] 最初の基礎の基礎は大事なところなので、じっくりで大丈夫ですよ^^ by jflute (2026/07/29)
-    // TODO sunamoto 焦らずじっくり頑張りましょー by fujisawa (2026/08/13)
+    // done sunamoto 焦らずじっくり頑張りましょー by fujisawa (2026/08/13)
 
     // done jflute 次回はimmutableやるぞ！ (2026/08/13)
     // #1on1: immutable/mutableとは？ (2026/08/14)
@@ -207,7 +207,7 @@ public class Step01VariableTest extends PlainTestCase {
     // taiga.sunamoto  ローカル変数をに代入してるだけだからinstanceMagiclampは変わらない (2026/08/07)
     // taiga.sunamoto  thisとかつけてローカル変数とインスタンス変数区別する (2026/08/07)
     // taiga.sunamoto  IntelliJちゃんが頭良いせいで、「パラメーターはローカル変数に変換できます」って出てきちゃってた... (2026/08/07)
-    // TODO sunamoto IDEの出してくる情報を気にするのは、実際の業務でも役に立つので継続しましょう by fujisawa (2026/08/13)
+    // done sunamoto IDEの出してくる情報を気にするのは、実際の業務でも役に立つので継続しましょう by fujisawa (2026/08/13)
 
     private void helpInstanceVariableViaMethod(String instanceMagiclamp) {
         instanceBroadway = "bigband";
@@ -230,7 +230,7 @@ public class Step01VariableTest extends PlainTestCase {
     }
     // taiga.sunamoto  "harbor416"はGC対象 (2026/08/07)
     // taiga.sunamoto  landは415のまま (2026/08/07)
-    // TODO jflute 1on1にて、BigDecimalエクササイズのimmutableと合わせてフォロー予定 (2026/08/13)
+    // done jflute 1on1にて、BigDecimalエクササイズのimmutableと合わせてフォロー予定 (2026/08/13)
     // #1on1: immutableがわかっていれば、helpメソッド読まなくても答えが出る (2026/08/14)
     // 読み飛ばしができるようになる。immutableってのは読み手にとっての情報でもある。
     // mutableだったら、変えてないにしてもそれを確認するためにくまなく読まないといけない。
@@ -256,8 +256,8 @@ public class Step01VariableTest extends PlainTestCase {
     //            return this;
     //        }
     // taiga.sunamoto  これを見て42を思い出した (2026/08/07)
-    // TODO sunamoto [いいね] ソースコード読んでるの素晴らしい by jflute (2026/08/13)
-    // TODO sunamoto [へー] 気になる笑 by jflute (2026/08/13)
+    // done sunamoto [いいね] ソースコード読んでるの素晴らしい by jflute (2026/08/13)
+    // done sunamoto [へー] 気になる笑 by jflute (2026/08/13)
 
     private void helpMethodArgumentMethodcall(StringBuilder sea, int land) {
         ++land;
@@ -281,7 +281,7 @@ public class Step01VariableTest extends PlainTestCase {
         sea = new StringBuilder(seaStr).append(land);
     }
     // taiga.sunamoto  新しいオブジェクトつくっちゃってるから元のseaには関係なし (2026/08/07)
-    // TODO sunamoto [いいね] ちゃんとインスタンスの違いを理解されていますね！ by jflute (2026/08/13)
+    // done sunamoto [いいね] ちゃんとインスタンスの違いを理解されていますね！ by jflute (2026/08/13)
 
     // 第二週はここまで！！
 
@@ -304,8 +304,13 @@ public class Step01VariableTest extends PlainTestCase {
      * o すべての変数をlog()でカンマ区切りの文字列で表示
      * </pre>
      */
+    int piari;
+
     public void test_variable_writing() {
         // define variables here
+        String sea = "mystic";
+        Integer land = null;
+        log(sea + "," +  land + "," +  piari);
     }
 
     // ===================================================================================
@@ -316,12 +321,23 @@ public class Step01VariableTest extends PlainTestCase {
      * (変数についてあなたのオリジナルの質問形式のエクササイズを作ってみましょう)
      * <pre>
      * _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-     * your question here (ここにあなたの質問を):
-     * 
+     * o ローカル変数、名前はraw, 型はString, 初期値は "生の"
+     * o ローカル変数、名前はraw, 型はString, 初期値は "鶏"
+     * o ローカル変数、名前はchicken, 型はString, 初期値は "鶏"
+     * o ローカル変数、名前はmeat, 型はString, 初期値は "肉"
+     * o ローカル変数、名前はhoge, 型はInteger, 初期値は null
+     * o インスタンス変数、名前はfuga, 型はInteger, 初期値なし
+     * o 上記の変数を組み合わせて、log()で「生の鶏肉はnullnull」と表示
      * _/_/_/_/_/_/_/_/_/_/
      * </pre>
      */
+    Integer fuga;
     public void test_variable_yourExercise() {
-        // write your code here
+        String raw = "生の";
+        String chicken = "鶏";
+        String meat = "肉";
+        Integer hoge = null;
+
+        log(raw + chicken + meat + "は" + hoge + fuga);
     }
 }

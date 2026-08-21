@@ -52,7 +52,7 @@ public class Step02IfForTest extends PlainTestCase {
         } else {
             sea = 7;
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 7
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -67,8 +67,9 @@ public class Step02IfForTest extends PlainTestCase {
         } else {
             sea = 9;
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 7
     }
+    // taiga.sunamoto 一度条件を満たせば他のelseには入らない (2026/08/21)
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_if_elseif_nested() {
@@ -107,8 +108,17 @@ public class Step02IfForTest extends PlainTestCase {
         if (land) {
             sea = 10;
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 10
     }
+
+    // if (land) {
+    //     sea = 10;
+    // }
+    // taiga.sunamoto 最初にこいつ見た (2026/08/21)
+
+    //   if (!land) {
+    //       land = true;
+    // taiga.sunamoto ここまで見て最後に飛んだ (2026/08/21)
 
     // ===================================================================================
     //                                                                       for Statement
@@ -123,7 +133,9 @@ public class Step02IfForTest extends PlainTestCase {
                 sea = stage;
             }
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => dockside
+
+        // taiga.sunamoto ArrayListはミュータブル (2026/08/21)
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -133,7 +145,7 @@ public class Step02IfForTest extends PlainTestCase {
         for (String stage : stageList) {
             sea = stage;
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => magiclamp
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -149,7 +161,7 @@ public class Step02IfForTest extends PlainTestCase {
                 break;
             }
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => hangar
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -165,8 +177,11 @@ public class Step02IfForTest extends PlainTestCase {
             }
         });
         String sea = sb.toString();
-        log(sea); // your answer? => 
+        log(sea); // your answer? => dockside
     }
+    // sb.length()
+    // taiga.sunamoto 最初は空文字列に対してのlength() (2026/08/21)
+
 
     // ===================================================================================
     //                                                                           Challenge
@@ -177,7 +192,23 @@ public class Step02IfForTest extends PlainTestCase {
      */
     public void test_iffor_making() {
         // write if-for here
+        List<String> stageList = prepareStageList();
+        List<String> filterList = new ArrayList<>();
+        stageList.forEach(stage -> {
+            if (stage.contains("a")) {
+                filterList.add(stage);
+            }
+        });
+        filterList.forEach(result -> {
+            log(result);
+        });
     }
+    // log(filterList)
+    // taiga.sunamoto この書き方でも出力出来た。見た目がListっぽくなっててみやすい。 (2026/08/21)
+    // taiga.sunamoto 多分log()が上手いことやってくれてる (2026/08/21)
+    // taiga.sunamoto log()の中でtoString()が使われてる (2026/08/21)
+
+    // taiga.sunamoto 第三週はここまで！ (2026/08/21)
 
     // ===================================================================================
     //                                                                           Good Luck
