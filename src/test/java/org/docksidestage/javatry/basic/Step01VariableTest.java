@@ -167,6 +167,9 @@ public class Step01VariableTest extends PlainTestCase {
     //         ので、8:2くらいでimmutable寄りで、but 無理しない (jflute個人もそう)
     //         (mutableで書く時は、安全性/可読性を別の手段で演出するように工夫)
     // o 他の言語では、immutable全推しのものもある。
+    //
+    // #1on1: 現場では意外とバランス指向だったかも (2026/08/27)
+    // MutableListが意外と活躍、無理しないで時々使う。
 
     // ===================================================================================
     //                                                                   Instance Variable
@@ -310,7 +313,7 @@ public class Step01VariableTest extends PlainTestCase {
         // define variables here
         String sea = "mystic";
         Integer land = null;
-        log(sea + "," +  land + "," +  piari);
+        log(sea + "," + land + "," + piari);
     }
 
     // ===================================================================================
@@ -332,6 +335,7 @@ public class Step01VariableTest extends PlainTestCase {
      * </pre>
      */
     Integer fuga;
+
     public void test_variable_yourExercise() {
         String raw = "生の";
         String chicken = "鶏";

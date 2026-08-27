@@ -86,7 +86,7 @@ public class Step02IfForTest extends PlainTestCase {
                 sea = sea++ * 2;
             }
             if (!land) {
-                land = true;
+                land = true; // ここを通ればseaは10
             } else if (sea <= 903) {
                 sea++;
             }
@@ -120,6 +120,34 @@ public class Step02IfForTest extends PlainTestCase {
     //       land = true;
     // taiga.sunamoto ここまで見て最後に飛んだ (2026/08/21)
 
+    // #1on1: ソースコードリーディングのコツ、漠然読み (2026/08/27)
+    // $複雑な時は部分を読んで探るのが習慣になってる by すなもとさん
+    // o 漠然と読んで、構造を把握する (全体像を見る)
+    //  → ここだと変数宣言、大中小のif, ログ出し
+    // o 当たり(ギャンブルポイント)を付けて、フォーカス読み
+    //  → 当たりの見つけ方: 構造を把握したら自然と + 逆さ読みで当てが見つかるなど
+    // 
+    // 頭の中でコードの地図を作ってから当たりを付けたり、普通に網羅読みしたり。
+    //
+    // 漠然読みのスクロールが、本の目次見たいなもの。
+    //
+    // なので、ギャンブルに負けても、損はない。
+    // ある程度踏み込んでるので、０から読むよりは速く読めるようになっている。
+    //
+    // あと、次の当たりが見つかることも多い。
+    // 3,4回それを繰り返しても、網羅読みよりは速い可能性高い。
+    //
+    // step1のBigDecimalのadd()のときも小さくやっていた。
+    //
+    // 仮説思考的なコーデリーディング!?
+    // 
+    // $仮説思考をやり切るのに経験が必要かも!? (特に当たりを付けるところ)
+    // $経験を積むしか？
+    // 半分yes, 半分あれこれ。
+    // 経験と体験の違い。ただ体験で終わると経験にならない。
+    // 体験したことを振り返って分析すること。
+    // 体験する前に、「こう意識してやってみよう」を繰り返すこと。
+
     // ===================================================================================
     //                                                                       for Statement
     //                                                                       =============
@@ -136,6 +164,7 @@ public class Step02IfForTest extends PlainTestCase {
         log(sea); // your answer? => dockside
 
         // taiga.sunamoto ArrayListはミュータブル (2026/08/21)
+        // #1on1: immutable/mutableの視点があるの素晴らしい (2026/08/27)
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -162,6 +191,14 @@ public class Step02IfForTest extends PlainTestCase {
             }
         }
         log(sea); // your answer? => hangar
+
+        // #1on1: JavaのJavaの文法としてのfor文 (2026/08/27)
+        // o intあいのfor文: Java当初から (1995年)
+        // o 拡張for文: Java10年目くらいから (2005年くらい) // 普通のfor文
+        // o forEach()メソッドは？: これは厳密にはJavaの文法としてのループではない
+        // $これは可読性を上げるため？
+        // yes, でもなぜ可読性が上がるのか？
+        // TODO jflute これは、"forEach()メソッドへの置き換え" をやってもらってから説明 (2026/08/27)
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -181,7 +218,6 @@ public class Step02IfForTest extends PlainTestCase {
     }
     // sb.length()
     // taiga.sunamoto 最初は空文字列に対してのlength() (2026/08/21)
-
 
     // ===================================================================================
     //                                                                           Challenge
