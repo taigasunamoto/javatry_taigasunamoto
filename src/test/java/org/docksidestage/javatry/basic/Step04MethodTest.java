@@ -35,7 +35,7 @@ public class Step04MethodTest extends PlainTestCase {
      */
     public void test_method_call_basic() {
         String sea = supplySomething();
-        log(sea); // your answer? =>
+        log(sea); // your answer? => over
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -43,8 +43,11 @@ public class Step04MethodTest extends PlainTestCase {
         String sea = functionSomething("mystic");
         consumeSomething(supplySomething());
         runnableSomething();
-        log(sea); // your answer? => 
+        log(sea); // your answer? => mysmys
     }
+
+    // taiga.sunamoto replace(a, b) aをbに置き換える (2026/09/08)
+    // taiga.sunamoto なんかごちゃごちゃやっているけど結局ローカル変数は変わらない (2026/09/08)
 
     private String functionSomething(String name) {
         String replaced = name.replace("tic", "mys");
@@ -76,8 +79,11 @@ public class Step04MethodTest extends PlainTestCase {
         if (!land) {
             sea = sea + mutable.getStageName().length();
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 910
     }
+
+    // taiga.sunamoto helloMutable(sea - 4, land, mutable); (2026/09/08)
+    // taiga.sunamoto ここではmutableオブジェクト以外は特に何も変わらない (2026/09/08)
 
     private int helloMutable(int sea, Boolean land, St4MutableStage piari) {
         sea++;
@@ -98,6 +104,9 @@ public class Step04MethodTest extends PlainTestCase {
             this.stageName = stageName;
         }
     }
+
+
+    // taiga.sunamoto 第4週はここまで！！ (2026/09/08)
 
     // ===================================================================================
     //                                                                   Instance Variable
