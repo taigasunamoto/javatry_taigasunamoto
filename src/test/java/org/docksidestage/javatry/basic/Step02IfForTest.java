@@ -17,6 +17,7 @@ package org.docksidestage.javatry.basic;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 import org.docksidestage.unit.PlainTestCase;
 
@@ -268,18 +269,73 @@ public class Step02IfForTest extends PlainTestCase {
         log(sea); // should be same as before-fix
     }
 
+    public void test_iffor_refactor_foreach_to_forEach_exe() {
+        List<String> stageList = prepareStageList();
+
+        AtomicReference<String> sea = new AtomicReference<>();
+        AtomicReference<Boolean> flag = new AtomicReference<>(false);
+
+        stageList.forEach(stage -> {
+
+            if (flag.get())
+                return;
+
+            if (stage.startsWith("br")) {
+                return;
+            }
+
+            sea.set(stage);
+
+            if (stage.contains("ga")) {
+                flag.set(true);
+            }
+
+        });
+
+        log(sea.get());
+
+    }
+
+    // taiga.sunamoto ラムダ式で使用される変数は final または実質的に final でなければなりません (2026/09/08)
+    // taiga.sunamoto ほう。。。 (2026/09/08)
+
+
     /**
      * Make your original exercise as question style about if-for statement. <br>
      * (if文for文についてあなたのオリジナルの質問形式のエクササイズを作ってみましょう)
      * <pre>
      * _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-     * your question here (ここにあなたの質問を):
-     * 
+     * o stageListを先頭から調べる
+     * o "a"を含まないstageはスキップする
+     * o "a"を含むステージをseaに代入する
+     * o 文字数が9文字以上になったらループを終了する
+     * o 最後にseaをログ出力する
+     * o forEach()メソッドを使って記述する
      * _/_/_/_/_/_/_/_/_/_/
      * </pre>
      */
     public void test_iffor_yourExercise() {
         // write your code here
+        List<String> stageList = prepareStageList();
+
+        AtomicReference<String> sea = new AtomicReference<>();
+        AtomicReference<Boolean> flag = new AtomicReference<>(false);
+
+        stageList.forEach(stage -> {
+            if (flag.get())
+                return;
+
+            if (!stage.contains("a"))
+                return;
+
+            sea.set(stage);
+
+            if (stage.length() >= 9) {
+                flag.set(true);
+            }
+        });
+
+        log(sea.get());
     }
 
     // ===================================================================================
