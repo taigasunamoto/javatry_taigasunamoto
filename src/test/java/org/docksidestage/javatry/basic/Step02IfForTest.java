@@ -272,11 +272,20 @@ public class Step02IfForTest extends PlainTestCase {
     public void test_iffor_refactor_foreach_to_forEach_exe() {
         List<String> stageList = prepareStageList();
 
+        // #1on1: 変数の再代入ができないのを回避するためにmutableクラスを導入したのGood (2026/09/11)
+        // 他だと e.g. StringBuilder, String[1]
+        // AtomicReferenceのAtomicとは？マルチスレッドの話ちょこっと。
+        // 超わずかなロック取得コストは実は掛かっている。
         AtomicReference<String> sea = new AtomicReference<>();
+
+        // TODO sunamoto まあエクササイズとはいえ、もうちょいわかる変数名を付けてみましょう by jflute (2026/09/11)
+        // TODO sunamoto 修行++: このboolean変数、なくても実現できるので考えてみよう(変数を一個無くす) by jflute (2026/09/11)
         AtomicReference<Boolean> flag = new AtomicReference<>(false);
 
         stageList.forEach(stage -> {
-
+            // この行は、すでに所属が違う。
+            // ここのstatementの属するメソッドは、test_メソッドではなく、accept()メソッド。
+            // 別クラス別メソッド。
             if (flag.get())
                 return;
 
@@ -291,14 +300,46 @@ public class Step02IfForTest extends PlainTestCase {
             }
 
         });
-
         log(sea.get());
 
     }
 
     // taiga.sunamoto ラムダ式で使用される変数は final または実質的に final でなければなりません (2026/09/08)
     // taiga.sunamoto ほう。。。 (2026/09/08)
-
+    // #1on1: なんで、Lambda式の中で、外側のローカル変数の再代入ができないのか？(なぜできないようにしてるのか？) (2026/09/11)
+    // forEach()メソッドのコード再び、Consumerインターフェースの実装クラスのインスタンスを受け取っている。
+    // それがたまたま呼び出し側で、Lambda式を利用して、実装クラスのインスタンスを表現している。
+    // コンパイラーの推論のお話、Lambda式は、new AbcConsumer().accept() {} みたいなもの。
+    // もし、再代入ができちゃったら、ローカル変数としてのコンセプトが崩れてしまうし...
+    // 時系列的な矛盾も発生して、カオスが生まれやすい。なので、そういうことはさせてない。
+    /*
+    String land = "a"; // 実質的finalだから参照はできる
+    land = "b"; // 実質的finalでない場合は参照すらできない
+    stageList.forEach(stage -> {
+        log(land);
+     */
+    // これも、カオスを避けるために。
+    //
+    // #1on1: forEach()メソッドの存在意義は？ (2026/09/11)
+    // 拡張for文と比べるとできないことだらけだけど、存在意義はあるのか？
+    // o intあいのfor文: Java当初から (1995年くらい)
+    // o 拡張for文: Java10年目くらいから (2005年くらい)
+    // o forEach()メソッド: Java20年目くらいから (2015年くらい)
+    //
+    // できないことだらけ？
+    // $メモリが豊富になって、Lambda式のnewが気にならなくなって実現しやすくなった
+    // でもそもそも実現する必要があるか？
+    //
+    // immutable/mutableを思い出してみましょう。
+    // 制限があることで得られるものがある。
+    // immutableと同じメリットが得られる。
+    //
+    // webサービスの業務ロジックとかだと、ストレートなループが多い。
+    // 現場だと、forEach()メソッドがフィットする場面が多い。
+    // なので、制限を加えていくつかの選択肢を与えて適材適所。
+    //
+    // 一方で、適材適所すぎるのもつらい。
+    // 使い分けの判断コストの積み重ね。このジレンマとずっと戦ってる。
 
     /**
      * Make your original exercise as question style about if-for statement. <br>
