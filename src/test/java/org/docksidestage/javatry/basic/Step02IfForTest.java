@@ -199,7 +199,7 @@ public class Step02IfForTest extends PlainTestCase {
         // o forEach()メソッドは？: これは厳密にはJavaの文法としてのループではない
         // $これは可読性を上げるため？
         // yes, でもなぜ可読性が上がるのか？
-        // TODO jflute これは、"forEach()メソッドへの置き換え" をやってもらってから説明 (2026/08/27)
+        // done sunamoto これは、"forEach()メソッドへの置き換え" をやってもらってから説明 (2026/08/27)
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -278,15 +278,13 @@ public class Step02IfForTest extends PlainTestCase {
         // 超わずかなロック取得コストは実は掛かっている。
         AtomicReference<String> sea = new AtomicReference<>();
 
-        // TODO sunamoto まあエクササイズとはいえ、もうちょいわかる変数名を付けてみましょう by jflute (2026/09/11)
+        // done sunamoto まあエクササイズとはいえ、もうちょいわかる変数名を付けてみましょう by jflute (2026/09/11)
         // TODO sunamoto 修行++: このboolean変数、なくても実現できるので考えてみよう(変数を一個無くす) by jflute (2026/09/11)
-        AtomicReference<Boolean> flag = new AtomicReference<>(false);
-
         stageList.forEach(stage -> {
             // この行は、すでに所属が違う。
             // ここのstatementの属するメソッドは、test_メソッドではなく、accept()メソッド。
             // 別クラス別メソッド。
-            if (flag.get())
+            if (sea.get() != null && sea.get().contains("ga"))
                 return;
 
             if (stage.startsWith("br")) {
@@ -294,10 +292,6 @@ public class Step02IfForTest extends PlainTestCase {
             }
 
             sea.set(stage);
-
-            if (stage.contains("ga")) {
-                flag.set(true);
-            }
 
         });
         log(sea.get());

@@ -124,7 +124,7 @@ public class Step04MethodTest extends PlainTestCase {
         }
         ++sea;
         sea = inParkCount;
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 100
     }
 
     private void offAnnualPassport(boolean hasAnnualPassport) {
@@ -141,6 +141,7 @@ public class Step04MethodTest extends PlainTestCase {
     //                                                                           Challenge
     //                                                                           =========
     // write instance variables here
+    private boolean availableLogging = true;
     /**
      * Make private methods as followings, and comment out caller program in test method:
      * <pre>
@@ -160,13 +161,35 @@ public class Step04MethodTest extends PlainTestCase {
      * </pre>
      */
     public void test_method_making() {
-        // use after making these methods
-        //String replaced = replaceCwithB(replaceAwithB("ABC"));
-        //String sea = quote(replaced, "'");
-        //if (isAvailableLogging()) {
-        //    showSea(sea);
-        //}
+//         use after making these methods
+        String replaced = replaceCwithB(replaceAwithB("ABC"));
+        String sea = quote(replaced, "'");
+        if (isAvailableLogging()) {
+            showSea(sea);
+        }
     }
 
-    // write methods here
+    // write methods here\
+
+    private String replaceAwithB(String value) {
+        return value.replace("A", "B");
+    }
+
+    private String replaceCwithB(String value) {
+        return value.replace("C", "B");
+    }
+
+    private String quote(String value, String quotation) {
+        return quotation + value + quotation;
+    }
+
+    private boolean isAvailableLogging() {
+        return availableLogging;
+    }
+
+    private void showSea(String sea) {
+        log(sea);
+    }
 }
+
+// 第5週はここまで！！あまり時間取れなかった...
