@@ -105,7 +105,6 @@ public class Step04MethodTest extends PlainTestCase {
         }
     }
 
-
     // taiga.sunamoto 第4週はここまで！！ (2026/09/08)
 
     // ===================================================================================
@@ -142,6 +141,7 @@ public class Step04MethodTest extends PlainTestCase {
     //                                                                           =========
     // write instance variables here
     private boolean availableLogging = true;
+
     /**
      * Make private methods as followings, and comment out caller program in test method:
      * <pre>
@@ -161,7 +161,7 @@ public class Step04MethodTest extends PlainTestCase {
      * </pre>
      */
     public void test_method_making() {
-//         use after making these methods
+        //         use after making these methods
         String replaced = replaceCwithB(replaceAwithB("ABC"));
         String sea = quote(replaced, "'");
         if (isAvailableLogging()) {
@@ -171,6 +171,19 @@ public class Step04MethodTest extends PlainTestCase {
 
     // write methods here\
 
+    // #1on1: いいね、メソッド定義順序が呼び出し順序と一緒で直感的で把握しやすい (2026/09/25)
+    // $普段から意識している、コードレビューで指摘もある、意味的なかたまり
+    // 意味的なかたまりと呼び出し順序、どっち優先？
+    // jflute: 意味的なかたまりの存在感がどの程度か？ (感覚値)
+    // まとまりを意識するなら、タグコメントを付けて独立させてしまう。
+    // 意味的なかたまりと呼び出し順序、ハイブリッド。
+    // LastaFlute の ActionRequestProcessor の例。
+    // TODO sunamoto [読み物課題] 別にパソコンがなくてもプログラミングはできるよ by jflute (2026/09/25)
+    // https://jflute.hatenadiary.jp/entry/20170923/nopcpg
+    // そういうこともあって、コードを整理しておいて、頭の中で再現しやすいようにしておく。
+    // 同時に、他の人が読みやすいものになる。
+    // TODO jflute さらに続きもあるので今度 (2026/09/25)
+
     private String replaceAwithB(String value) {
         return value.replace("A", "B");
     }
@@ -179,6 +192,8 @@ public class Step04MethodTest extends PlainTestCase {
         return value.replace("C", "B");
     }
 
+    // #1on1: いいね、第二引数名がわかりやすくて良い (2026/09/25)
+    // 業務的な意味があるかどうか？
     private String quote(String value, String quotation) {
         return quotation + value + quotation;
     }

@@ -279,7 +279,11 @@ public class Step02IfForTest extends PlainTestCase {
         AtomicReference<String> sea = new AtomicReference<>();
 
         // done sunamoto まあエクササイズとはいえ、もうちょいわかる変数名を付けてみましょう by jflute (2026/09/11)
-        // TODO sunamoto 修行++: このboolean変数、なくても実現できるので考えてみよう(変数を一個無くす) by jflute (2026/09/11)
+        // done sunamoto 修行++: このboolean変数、なくても実現できるので考えてみよう(変数を一個無くす) by jflute (2026/09/11)
+        // #1on1: パズルトレーニングとしてはGood, 完璧 (2026/09/25)
+        // 一方で、局所的なケースで、場合によってはbooleanで先に判定を確定しておいた方が良いことも。
+        // A or B で 100:0 になることはめったにない。99:1で頭の片隅に置いておく。
+        // (いつでも1を取り出せるようにしておく)
         stageList.forEach(stage -> {
             // この行は、すでに所属が違う。
             // ここのstatementの属するメソッドは、test_メソッドではなく、accept()メソッド。

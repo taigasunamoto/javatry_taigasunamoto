@@ -40,6 +40,20 @@ public class Step03DataTypeTest extends PlainTestCase {
     public void test_datatype_basicType() {
         String sea = "mystic";
         Integer land = 416;
+        // #1on1: 日付と日時という言葉 (2026/09/25)
+        // 日付(Date):     年月日
+        // 日時(DateTime): 年月日 + 時分秒 (+ ミリ秒)
+        // 歴史的な経緯もあって...
+        // Dateって言ってるのに、時分秒があるものもある。
+        // e.g. java.util.Date, OracleDB DATE型なのに時分秒
+        // 時々気をつけましょう。
+        //
+        // 一方で、日付(系)クラスって言い方。
+        //
+        // 用語に神経質になるお仕事。
+        //
+        // DDDのユビキタス言語のお話から、軽量DDDのジレンマのお話。
+        // 成功しているDDDのお話。
         LocalDate piari = LocalDate.of(2001, 9, 4);
         LocalDateTime bonvo = LocalDateTime.of(2001, 9, 4, 12, 34, 56);
         Boolean dstore = true;
@@ -86,6 +100,7 @@ public class Step03DataTypeTest extends PlainTestCase {
     }
 
     // taiga.sunamoto byte型があんま使い馴染みがなくて調べて思い出した (2026/09/08)
+    // #1on1: バイナリデータを取り扱う時に byte[] を使うことはあるけど、それ以外はなかなかない (2026/09/25)
 
     // ===================================================================================
     //                                                                              Object
