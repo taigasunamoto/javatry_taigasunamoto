@@ -178,7 +178,7 @@ public class Step04MethodTest extends PlainTestCase {
     // まとまりを意識するなら、タグコメントを付けて独立させてしまう。
     // 意味的なかたまりと呼び出し順序、ハイブリッド。
     // LastaFlute の ActionRequestProcessor の例。
-    // TODO sunamoto [読み物課題] 別にパソコンがなくてもプログラミングはできるよ by jflute (2026/09/25)
+    // done sunamoto [読み物課題] 別にパソコンがなくてもプログラミングはできるよ by jflute (2026/09/25)
     // https://jflute.hatenadiary.jp/entry/20170923/nopcpg
     // そういうこともあって、コードを整理しておいて、頭の中で再現しやすいようにしておく。
     // 同時に、他の人が読みやすいものになる。
