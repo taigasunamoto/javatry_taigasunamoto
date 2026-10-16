@@ -57,12 +57,12 @@ public class TicketBooth {
      * @throws TicketShortMoneyException When the specified money is short for purchase.
      */
     public Ticket buyOneDayPassport(Integer handedMoney) {
-       buyPassport(handedMoney, ONE_DAY_PRICE);
-       return new Ticket(ONE_DAY_PRICE);
+        buyPassport(handedMoney, ONE_DAY_PRICE);
+        return new Ticket(ONE_DAY_PRICE);
     }
 
     public int buyTwoDayPassport(Integer handedMoney) {
-       return buyPassport(handedMoney, TWO_DAY_PRICE);
+        return buyPassport(handedMoney, TWO_DAY_PRICE);
     }
 
     private int buyPassport(Integer handedMoney, int price) {
@@ -75,7 +75,7 @@ public class TicketBooth {
         --quantity;
         if (salesProceeds != null) {
             salesProceeds = salesProceeds + price;
-        }  else {
+        } else {
             salesProceeds = price;
         }
         return handedMoney - price;

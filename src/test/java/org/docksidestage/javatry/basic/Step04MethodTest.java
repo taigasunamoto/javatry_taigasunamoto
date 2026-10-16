@@ -182,7 +182,11 @@ public class Step04MethodTest extends PlainTestCase {
     // https://jflute.hatenadiary.jp/entry/20170923/nopcpg
     // そういうこともあって、コードを整理しておいて、頭の中で再現しやすいようにしておく。
     // 同時に、他の人が読みやすいものになる。
-    // TODO jflute さらに続きもあるので今度 (2026/09/25)
+    // done jflute さらに続きもあるので今度 (2026/09/25)
+    // #1on1: "コツ3: 暗闇とお友達"  (2026/10/16)
+    // 難しい講義を聞く時のコツでもある。
+    // 一方で、Optionalとかのないかもしれないという曖昧なままで論理を先に進める考え方とも近いかも!?
+    // step8のOptionalわずかに先取り。
 
     private String replaceAwithB(String value) {
         return value.replace("A", "B");
