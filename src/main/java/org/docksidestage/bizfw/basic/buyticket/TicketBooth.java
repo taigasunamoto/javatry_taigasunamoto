@@ -30,6 +30,7 @@ public class TicketBooth {
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
+    // #1on1: $在庫は共有でいいのか？どうすればいいのか？迷った (2026/10/30)
     private int quantity = MAX_QUANTITY;
     private Integer salesProceeds; // null allowed: until first purchase
 
@@ -50,6 +51,10 @@ public class TicketBooth {
     // * @throws TicketSoldOutException ブース内のチケットが売り切れだったら
     // * @throws TicketShortMoneyException 買うのに金額が足りなかったら
     // */
+    // TODO sunamoto JavaDoc, 戻り値が追加されたので @return を追加で by jflute (2026/10/30)
+    // 既存のJavaDocに注目、必要になったら修正。
+    // TwoDayにJavaDocつけるか？付ける方がベターだけど、代表選手としてOneDayのみもアリ。
+    // e.g. cb.query().setMemberStatusCode_Equal_AsMemberStatus(cdef) の例
     /**
      * Buy one-day passport, method for park guest.
      * @param handedMoney The money (amount) handed over from park guest. (NotNull, NotMinus)
@@ -67,6 +72,12 @@ public class TicketBooth {
         return new TicketBuyResult(ticket, change);
     }
 
+    // TODO sunamoto publicのbuyとprivateのbuyを区別するテクニック by jflute (2026/10/30)
+    // (些細だけど)単純なメソッド一覧で混ざって区別しづらい、会話上区別しづらいので...
+    // 仮に業務で、buyとpurchaseって区分けされているのであればもうそれを使う。
+    // だけど業務ではbuyという言葉しかない。
+    // e.g. doBuyPassport(), internalBuyPassport()
+    // (jfluteはdoBuy好き)
     private int buyPassport(Integer handedMoney, int price) {
         if (quantity <= 0) {
             throw new TicketSoldOutException("Sold out");
@@ -80,8 +91,28 @@ public class TicketBooth {
         } else {
             salesProceeds = price;
         }
+        // TODO sunamoto お釣り、文脈でわかるにせよ、ストレートにわかりたい by jflute (2026/10/30)
+        // o 変数に置く (名前付けのための変数)
+        // o 横のすらすらコメントでお釣りって書く
+        // o JavaDocちゃんと書く (ベター)
+        //  i ちょっと面倒さが入る、しかも、privateメソッド、費用対効果は？
+        //  i JavaDocの費用対効果、publicだったら大きい
+        //  i privateメソッドは比較的小さくなる
+        //  i ただこの場合は非常に存在感の大きいprivateメソッド
+        //  i そういう場合は費用対効果も高くなるのでJavaDoc書くことも多い
         return handedMoney - price;
     }
+
+    // #1on1: コメントどこまで書く？AIとの関連 (2026/10/30)
+    // 良いコメントがあれば、AIもそれを読んでくれるし、真似てくれる。(体感)
+    // $なかなか現場でもコメントできていない。規約も特にない。
+    //
+    // コメント書くの面倒という言い訳は言えなくなった。
+    // ただ必要なことは、どんなコメント書けばいいのか？の理想像を持ってるかどうか？
+    // (AIにどんなコメントを書かせればいいのか？につながる)
+    //
+    // 細かいフォーマットは置いておいて、「コードから読み取れないことを書く」
+    // というシンプルなテーマでも良いのかなと。
 
     public static class TicketSoldOutException extends RuntimeException {
 
