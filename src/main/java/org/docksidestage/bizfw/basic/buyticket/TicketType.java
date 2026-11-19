@@ -7,7 +7,7 @@ public enum TicketType {
 
     private final int usableDays;
 
-    private TicketType(int usableDays) {
+    TicketType(int usableDays) {
         this.usableDays = usableDays;
     }
 
