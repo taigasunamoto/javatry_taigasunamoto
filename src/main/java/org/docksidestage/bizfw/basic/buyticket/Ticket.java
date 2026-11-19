@@ -20,27 +20,24 @@ package org.docksidestage.bizfw.basic.buyticket;
  */
 public class Ticket {
 
-    private static final int DEFAULT_USABLE_DAYS = 1;
-
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
     private final int displayPrice; // written on ticket, park guest can watch this
+    private final TicketType ticketType;
     private int remainingDays; // one doInPark() call consumes one day
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
     public Ticket(int displayPrice) {
-        this(displayPrice, DEFAULT_USABLE_DAYS);
+        this(displayPrice, TicketType.ONE_DAY);
     }
 
-    public Ticket(int displayPrice, int usableDays) {
-        if (usableDays <= 0) {
-            throw new IllegalArgumentException("Usable days must be positive: " + usableDays);
-        }
+    public Ticket(int displayPrice, TicketType ticketType) {
         this.displayPrice = displayPrice;
-        this.remainingDays = usableDays;
+        this.ticketType = ticketType;
+        this.remainingDays = ticketType.getUsableDays();
     }
 
     // ===================================================================================
@@ -58,6 +55,10 @@ public class Ticket {
     //                                                                            ========
     public int getDisplayPrice() {
         return displayPrice;
+    }
+
+    public TicketType getTicketType() {
+        return ticketType;
     }
 
     public boolean isAlreadyIn() {

@@ -19,6 +19,7 @@ import org.docksidestage.bizfw.basic.buyticket.Ticket;
 import org.docksidestage.bizfw.basic.buyticket.TicketBooth;
 import org.docksidestage.bizfw.basic.buyticket.TicketBooth.TicketShortMoneyException;
 import org.docksidestage.bizfw.basic.buyticket.TicketBuyResult;
+import org.docksidestage.bizfw.basic.buyticket.TicketType;
 import org.docksidestage.unit.PlainTestCase;
 
 /**
@@ -215,23 +216,25 @@ public class Step05ClassTest extends PlainTestCase {
      * (買ったチケットの種別がTwoDayPassportなのかどうかをif文で正確に判定してみましょう。(必要ならTicketクラスたちを修正))
      */
     public void test_class_moreFix_whetherTicketType() {
-        // uncomment when you implement this exercise
-        //TicketBooth booth = new TicketBooth();
-        //Ticket oneDayPassport = booth.buyOneDayPassport(10000);
-        //showTicketIfNeeds(oneDayPassport);
-        //TicketBuyResult buyResult = booth.buyTwoDayPassport(10000);
-        //Ticket twoDayPassport = buyResult.getTicket();
-        //showTicketIfNeeds(twoDayPassport);
+        TicketBooth booth = new TicketBooth();
+        Ticket oneDayPassport = booth.buyOneDayPassport(10000);
+        showTicketIfNeeds(oneDayPassport); // should be other
+        TicketBuyResult buyResult = booth.buyTwoDayPassport(14000);
+        Ticket twoDayPassport = buyResult.getTicket();
+        showTicketIfNeeds(twoDayPassport); // should be two-day passport
+
+        twoDayPassport.doInPark();
+        twoDayPassport.doInPark();
+        showTicketIfNeeds(twoDayPassport); // should be two-day passport
     }
 
-    // uncomment when you implement this exercise
-    //private void showTicketIfNeeds(Ticket ticket) {
-    //    if (xxxxxxxxxxxxxxxxxx) { // write determination for two-day passport
-    //        log("two-day passport");
-    //    } else {
-    //        log("other");
-    //    }
-    //}
+    private void showTicketIfNeeds(Ticket ticket) {
+        if (ticket.getTicketType() == TicketType.TWO_DAY) {
+            log("two-day passport");
+        } else {
+            log("other");
+        }
+    }
 
     // ===================================================================================
     //                                                                           Good Luck
