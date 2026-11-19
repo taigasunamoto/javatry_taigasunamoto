@@ -53,13 +53,14 @@ public class TicketBooth {
     // * @throws TicketSoldOutException ブース内のチケットが売り切れだったら
     // * @throws TicketShortMoneyException 買うのに金額が足りなかったら
     // */
-    // TODO sunamoto JavaDoc, 戻り値が追加されたので @return を追加で by jflute (2026/10/30)
+    // done sunamoto JavaDoc, 戻り値が追加されたので @return を追加で by jflute (2026/10/30)
     // 既存のJavaDocに注目、必要になったら修正。
     // TwoDayにJavaDocつけるか？付ける方がベターだけど、代表選手としてOneDayのみもアリ。
     // e.g. cb.query().setMemberStatusCode_Equal_AsMemberStatus(cdef) の例
     /**
      * Buy one-day passport, method for park guest.
      * @param handedMoney The money (amount) handed over from park guest. (NotNull, NotMinus)
+     * @return The purchased one-day passport. (NotNull)
      * @throws TicketSoldOutException When ticket in booth is sold out.
      * @throws TicketShortMoneyException When the specified money is short for purchase.
      */
@@ -74,7 +75,7 @@ public class TicketBooth {
         return new TicketBuyResult(ticket, change);
     }
 
-    // TODO sunamoto publicのbuyとprivateのbuyを区別するテクニック by jflute (2026/10/30)
+    // done sunamoto publicのbuyとprivateのbuyを区別するテクニック by jflute (2026/10/30)
     // (些細だけど)単純なメソッド一覧で混ざって区別しづらい、会話上区別しづらいので...
     // 仮に業務で、buyとpurchaseって区分けされているのであればもうそれを使う。
     // だけど業務ではbuyという言葉しかない。

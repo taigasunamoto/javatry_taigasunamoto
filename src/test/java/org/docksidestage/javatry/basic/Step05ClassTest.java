@@ -128,7 +128,7 @@ public class Step05ClassTest extends PlainTestCase {
     // よもやま: 人間としての活動のスキルを、プログラミングから学びやすい(だろう)。
     //
 
-    // TODO jflute 次回れびゅーここから (2026/10/16)
+    // done jflute 次回れびゅーここから (2026/10/16)
     /**
      * Make method for buying two-day passport (price is 13200). (which can return change as method return value)
      * (TwoDayPassport (金額は13200) も買うメソッドを作りましょう (戻り値でお釣りをちゃんと返すように))
