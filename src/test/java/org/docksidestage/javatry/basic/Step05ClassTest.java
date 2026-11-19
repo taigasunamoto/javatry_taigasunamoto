@@ -194,7 +194,20 @@ public class Step05ClassTest extends PlainTestCase {
      * (TwoDayPassportなのに一回しか利用できません。複数日数に対応できるようにTicketを修正しましょう)
      */
     public void test_class_moreFix_usePluralDays() {
-        // your confirmation code here
+        TicketBooth booth = new TicketBooth();
+        Ticket twoDayPassport = booth.buyTwoDayPassport(14000).getTicket();
+        log(twoDayPassport.isAlreadyIn()); // should be false
+
+        twoDayPassport.doInPark(); // first day
+        log(twoDayPassport.isAlreadyIn()); // should be false
+
+        twoDayPassport.doInPark(); // second day
+        log(twoDayPassport.isAlreadyIn()); // should be true
+
+        Ticket oneDayPassport = booth.buyOneDayPassport(10000);
+        log(oneDayPassport.isAlreadyIn()); // should be false
+        oneDayPassport.doInPark();
+        log(oneDayPassport.isAlreadyIn()); // should be true
     }
 
     /**

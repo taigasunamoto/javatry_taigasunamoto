@@ -26,6 +26,8 @@ public class TicketBooth {
     private static final int MAX_QUANTITY = 10;
     private static final int ONE_DAY_PRICE = 7400; // when 2019/06/15
     private static final int TWO_DAY_PRICE = 13200;
+    private static final int ONE_DAY_USABLE_DAYS = 1;
+    private static final int TWO_DAY_USABLE_DAYS = 2;
 
     // ===================================================================================
     //                                                                           Attribute
@@ -63,12 +65,12 @@ public class TicketBooth {
      */
     public Ticket buyOneDayPassport(Integer handedMoney) {
         buyPassport(handedMoney, ONE_DAY_PRICE);
-        return new Ticket(ONE_DAY_PRICE);
+        return new Ticket(ONE_DAY_PRICE, ONE_DAY_USABLE_DAYS);
     }
 
     public TicketBuyResult buyTwoDayPassport(Integer handedMoney) {
         int change = buyPassport(handedMoney, TWO_DAY_PRICE);
-        Ticket ticket = new Ticket(TWO_DAY_PRICE);
+        Ticket ticket = new Ticket(TWO_DAY_PRICE, TWO_DAY_USABLE_DAYS);
         return new TicketBuyResult(ticket, change);
     }
 
