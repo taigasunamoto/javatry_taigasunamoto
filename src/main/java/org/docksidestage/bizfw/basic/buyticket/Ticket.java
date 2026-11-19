@@ -20,6 +20,8 @@ package org.docksidestage.bizfw.basic.buyticket;
  */
 public class Ticket {
 
+    private static final int DEFAULT_USABLE_DAYS = 1;
+
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
@@ -29,6 +31,10 @@ public class Ticket {
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
+    public Ticket(int displayPrice) {
+        this(displayPrice, DEFAULT_USABLE_DAYS);
+    }
+
     public Ticket(int displayPrice, int usableDays) {
         if (usableDays <= 0) {
             throw new IllegalArgumentException("Usable days must be positive: " + usableDays);
